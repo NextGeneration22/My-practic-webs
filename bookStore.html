@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, unitial-scale=1.0">
+    <title>start coding with JS</title>
+    <style>
+       #inCart {
+  border: 2px solid #000000;
+  width: 35vw;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-image: url("https://assets.codepen.io/12887886/shopping_cart-removebg-preview.png");
+  background-repeat: no-repeat;
+  background-position:center;
+  overflow: auto;
+}
+
+body {
+  background-image: url("https://assets.codepen.io/12887886/bookstore.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+button.BuyB{
+  position: fixed;
+  right: 0;
+  top: 0;
+  color:#ffffff;
+  background-color:green;
+  width:10vw;
+  height:10vw;
+  font-size:20px
+}
+button.cartt{
+  color:#ffffff;
+  background-color: rgba(0,0,256, 0.5);
+  width:15vw;
+  height:5vw;
+  font-size:20px
+}
+ 
+    </style>
+  </head>
+  <body>
+    <h1>Books:</h1>
+    <div id="bookBuy"></div>
+    <div id="inCart">
+    </div>
+    <button onclick="removeItem()" class="BuyB">buyNow</button>
+    <script>
+        const books={
+        bookList:['<img src="https://assets.codepen.io/12887886/human+nature.png" alt="" />',
+                  '<img src="https://assets.codepen.io/12887886/atomic+habit.png" alt="" />',
+                  `<img src="https://assets.codepen.io/12887886/12+rule.png" alt="" />`, 
+                  '<img src="https://assets.codepen.io/12887886/mastery.png" alt="" />',
+                  '<img src="https://assets.codepen.io/12887886/emotional+entelligence.png" alt="" />',
+                  '<img src="https://assets.codepen.io/12887886/can-t+hurt+me.png" alt="" />'],
+        displayList(){
+           return this.bookList.map((item, index)=>`<p>${item}<button onclick="copyItem(${index})" class="cartt" >Add to cart</button></p>`).join('')
+        }
+      }
+      document.getElementById("bookBuy").innerHTML= books.displayList();
+const cartItem =[];
+function copyItem(index){
+  cartItem.push(books.bookList[index])
+  document.getElementById("inCart").innerHTML=cartItem
+}
+function removeItem(){
+  for(i=0;i<cartItem.length;i++){
+  let w= books.bookList.indexOf(cartItem[i]);
+   delete books.bookList[w];
+   document.getElementById("bookBuy").innerHTML= books.displayList();
+   delete cartItem[i];
+   document.getElementById("inCart").innerHTML=cartItem.join('')
+   
+  }
+}
+    </script>
+  </body>
+</html>
