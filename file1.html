@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>never give up</title> 
+    <style>
+      #liToEvHe {
+       width:90vw;
+      }
+      #prNuHe{
+        color:rgb(165, 55, 0);
+        font-size:1.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Leave your comment:</h3>
+    <p><lable>Write here:<input type="text" name="enter-text" id="liToEvHe"></lable></p>
+    <p>maximum words is 20. You typed: <span id="prNuHe">0</span> words.</p>
+    <script>
+       function crArray(){
+        if(event.code==='Space'){
+          const words=event.target.value.trim().split(/\s+/);
+          let countt = words.length;
+        if (countt > 20){
+          const Mwords = words.slice(0, 20).join(" ");
+          event.target.value= Mwords;
+          countt= 20;
+        }
+        document.getElementById("prNuHe").innerHTML=countt;
+      }
+      }
+       document.getElementById("liToEvHe").addEventListener('keydown', crArray)
+    </script>
+  </body>
+</html> 
